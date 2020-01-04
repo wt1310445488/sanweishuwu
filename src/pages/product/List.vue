@@ -10,7 +10,7 @@
         <el-table-column prop="name" label="产品名称"></el-table-column>
         <el-table-column prop="price" label="价格"></el-table-column>
         <el-table-column prop="description" label="描述"></el-table-column>
-        <el-table-column prop="categoryId" label="所属产品"></el-table-column>
+        <el-table-column prop="categoryId" label="所属栏目"></el-table-column>
         <el-table-column label="操作">
             <template v-slot="slot">
                 <a href=""  @click.prevent="toDeleteHandler(slot.row.id)"><i class="el-icon-delete"></i></a>
@@ -33,10 +33,7 @@
             width="60%">
         
           <el-form :model="form" label-width="80px">
-            <el-form-item label="编号">
-                <el-input v-model="form.id">
-                </el-input>
-            </el-form-item>
+           
              <el-form-item label="产品名称">
                 <el-input v-model="form.name">
                 </el-input>
@@ -45,12 +42,19 @@
                 <el-input  v-model="form.price">
                 </el-input>
             </el-form-item>
-             <el-form-item label="描述">
-                <el-input  v-model="form.description">
-                </el-input>
+           
+             <el-form-item label="所属栏目">
+                <el-select v-model="form.categoryId" placeholder="请选择">
+                <el-option
+                v-for="item in options"
+                :key="item.id"
+                :label="item.name"
+                :value="item.id">
+                </el-option>
+            </el-select>
             </el-form-item>
-             <el-form-item label="所属产品">
-                <el-input  v-model="form.categoryId">
+             <el-form-item label="描述">
+                <el-input type="textarea" v-model="form.description">
                 </el-input>
             </el-form-item>
           </el-form>
@@ -69,6 +73,13 @@ import querystring from 'querystring'
 export default {
     //用于存放网页中需要调用的方法
     methods:{
+        loadCategory(){
+             let url = "http://localhost:6677/category/findAll"
+        request.get(url).then((response)=>{
+            //将查询结果设置到products中,this指向外部函数的this
+            this.options = response.data;
+        })
+        },
         loadData(){
              let url = "http://localhost:6677/product/findAll"
         request.get(url).then((response)=>{
@@ -99,8 +110,8 @@ export default {
         },
         toAddHandler(){
             this.form = {
-        type:"product"
-      }
+        // type:"product"
+        }
             this.title="录入员工信息";
             this.visible = true;
         },
@@ -136,11 +147,14 @@ export default {
     //要想网页中显示的数据
     data(){
         return{
+            options: [],
+            
+
             title:"title",
             visible:false,
             products:[],
             form:{
-                type:"product"
+                // type:"product"
             }
         }
 
@@ -148,6 +162,7 @@ export default {
     created(){
         //vue实例创建完毕需要执行的
        this.loadData();
+       this.loadCategory();
     }
 }
 </script>
