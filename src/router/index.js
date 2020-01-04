@@ -82,8 +82,8 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'index',
-        name: 'Customerlist',
+        path: ' List',
+        name: 'CustomerList',
         component: () => import('@/pages/customer/List'),
         meta: { title: '顾客管理', icon: 'user' }
       }
@@ -94,8 +94,8 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'index',
-        name: 'Employeelist',
+        path: 'List',
+        name: 'EmployeeList',
         component: () => import('@/pages/employee/List'),
         meta: { title: '员工管理', icon: 'user' }
       }
@@ -106,8 +106,8 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'index',
-        name: 'Productlist',
+        path: 'List',
+        name: 'ProductList',
         component: () => import('@/pages/product/List'),
         meta: { title: '产品管理', icon: 'tree' }
       }
@@ -118,8 +118,8 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'index',
-        name: 'Categorylist',
+        path: 'List',
+        name: 'CategoryList',
         component: () => import('@/pages/category/List'),
         meta: { title: '栏目管理', icon: 'tree' }
       }
@@ -130,8 +130,8 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'index',
-        name: 'Orderlist',
+        path: 'List',
+        name: 'OrderList',
         component: () => import('@/pages/order/List'),
         meta: { title: '订单管理', icon: 'tree' }
       }
@@ -142,8 +142,8 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'index',
-        name: 'Commentlist',
+        path: 'List',
+        name: 'CommentList',
         component: () => import('@/pages/comment/List'),
         meta: { title: '评论管理', icon: 'tree' }
       }
@@ -154,8 +154,8 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'index',
-        name: 'Addresslist',
+        path: 'List',
+        name: 'AddressList',
         component: () => import('@/pages/address/List'),
         meta: { title: '地址管理', icon: 'tree' }
       }
