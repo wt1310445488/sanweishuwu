@@ -6,15 +6,12 @@
         <el-button  size="small" type="danger" >删除</el-button>
         <!-- 按钮结束 -->
         <!-- 表格 -->
-        <el-table :data="employees">
+        <el-table :data="customers">
         <el-table-column fixed="left" prop = "id" label="编号"></el-table-column>
         <el-table-column fixed="left" prop = "username" label="用户名"></el-table-column>
         <el-table-column prop = "realname" label="姓名"></el-table-column>
-        <el-table-column prop = "password" label="密码"></el-table-column>
         <el-table-column prop = "gender" label="性别"></el-table-column>
-        <el-table-column width="120" prop = "telephone" label="手机号"></el-table-column>
-        <el-table-column width="200" prop = "bankCard" label="银行卡号"></el-table-column>
-        <el-table-column width="200" prop = "idCard" label="身份证号"></el-table-column>
+        <el-table-column width="120" prop = "telephone" label="手机号"></el-table-column>       
         <el-table-column fixed="right" label="操作">
             <template v-slot="slot">
                 <a href="" @click.prevent="toDeleteHandler(slot.row.id)">删除</a>
@@ -41,10 +38,6 @@
               <el-input v-model="form.username">
               </el-input>
             </el-form-item>
-             <el-form-item label="密码">
-              <el-input type="password" v-model="form.password">
-              </el-input>
-            </el-form-item>
             <el-form-item label="姓名">
               <el-input v-model="form.realname">
               </el-input>
@@ -59,14 +52,7 @@
               <el-input v-model="form.telephone">
               </el-input>
             </el-form-item>
-             <el-form-item label="身份证号">
-              <el-input v-model="form.idCard">
-              </el-input>
-            </el-form-item>
-             <el-form-item label="银行卡号">
-              <el-input v-model="form.bankCard">
-              </el-input>
-            </el-form-item>
+             
           </el-form>
         <span>录入员工信息</span>
         <span slot="footer" class="dialog-footer">
@@ -91,16 +77,16 @@ export default {
        return{
            title:"title",
            visible:false,
-           employees:[],
+           customers:[],
            form:{
-             type:"waiter"
+             type:"customer"
            }
            }
           },
        
     methods:{
     submitHandler(){
-        let url = "http://localhost:6677/waiter/saveOrUpdate";
+        let url = "http://localhost:6677/customer/saveOrUpdate";
         //前端向后台发送请求，完成数据的保存操作
         request({  
           url,
@@ -122,10 +108,10 @@ export default {
       },
       //重载员工数据
     loadData(){
-        let url = "http://localhost:6677/waiter/findAll"
+        let url = "http://localhost:6677/customer/findAll"
         request.get(url).then((response)=>{
           //箭头函数中的this指向外部函数中的this
-          this.employees = response.data;
+          this.customers = response.data;
         })
       },
     closeModalHandler(){
@@ -133,7 +119,7 @@ export default {
        },
     toAddHandler(){
       this.form = {
-        type:"employee"
+        type:"customer"
       }
        this.title="录入员工信息";
        this.visible=true;
@@ -146,7 +132,7 @@ export default {
           type: 'warning'
         }).then(() => {
             //调用后台接口，完成删除操作。
-            let url = "http://localhost:6677/waiter/deleteById?id="+id;
+            let url = "http://localhost:6677/customer/deleteById?id="+id;
             request.get(url).then((response)=>{
                 //1.刷新数据
                 this.loadData();
