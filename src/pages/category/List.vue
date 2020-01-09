@@ -9,7 +9,6 @@
         <el-table-column prop = "id" label="编号"></el-table-column>
         <el-table-column prop="name" label="栏目名称"></el-table-column>
         <el-table-column prop="num" label="序号"></el-table-column>
-        <el-table-column prop="parentId" label="父栏目"></el-table-column>
         <el-table-column label="操作">
             <template v-slot="slot">
                 <a href=""  @click.prevent="toDeleteHandler(slot.row.id)"><i class="el-icon-delete"></i></a>
@@ -31,11 +30,11 @@
             width="60%">
         
           <el-form :model="form" label-width="80px">
-            <!-- <el-form-item label="编号">
+            <el-form-item label="编号">
                 <el-input v-model="form.id">
                 </el-input>
             </el-form-item>
-             <el-form-item label="父栏目">
+             <!-- <el-form-item label="父栏目">
                 <el-input type="parentId" v-model="form.parentId">
                 </el-input>
             </el-form-item> -->

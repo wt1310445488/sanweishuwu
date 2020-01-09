@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: ' 家政服务预约云平台',
+  title: '三味书屋约书云平台',
 
   /**
    * @type {boolean} true | false
