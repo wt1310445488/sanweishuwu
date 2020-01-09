@@ -14,7 +14,6 @@
         <el-table-column prop = "gender" label="性别"></el-table-column>
         <el-table-column width="120" prop = "telephone" label="手机号"></el-table-column>
         <el-table-column width="200" prop = "bankCard" label="银行卡号"></el-table-column>
-        <el-table-column width="200" prop = "idCard" label="身份证号"></el-table-column>
         <el-table-column fixed="right" label="操作">
             <template v-slot="slot">
                 <a href="" @click.prevent="toDeleteHandler(slot.row.id)">删除</a>
@@ -57,10 +56,6 @@
             </el-form-item>
              <el-form-item label="手机号" >
               <el-input v-model="form.telephone">
-              </el-input>
-            </el-form-item>
-             <el-form-item label="身份证号">
-              <el-input v-model="form.idCard">
               </el-input>
             </el-form-item>
              <el-form-item label="银行卡号">
