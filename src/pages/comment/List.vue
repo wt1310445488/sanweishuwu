@@ -60,7 +60,7 @@ export default {
     //用于存放网页中需要调用的方法
     methods:{
         loadData(){
-             let url = "http://localhost:6677/comment/findAll"
+             let url = "http://120.55.194.134:6677/comment/findAll"
         request.get(url).then((response)=>{
             //将查询结果设置到customers中,this指向外部函数的this
             this.comments = response.data;
@@ -68,7 +68,7 @@ export default {
         },
         submitHandler(){
             //通过request与后台进行交互，并携带参数
-            let url = "http://localhost:6677/comment/saveOrUpdate"
+            let url = "http://120.55.194.134:6677/comment/saveOrUpdate"
             request({
                 url,
                 method:"POST",
@@ -110,7 +110,7 @@ export default {
           type: 'warning'
         }).then(() => {
             //调用后台接口，完成删除操作。
-            let url = "http://localhost:6677/comment/deleteById?id="+id;
+            let url = "http://120.55.194.134:6677/comment/deleteById?id="+id;
             request.get(url).then((response)=>{
                 //1.刷新数据
                 this.loadData();

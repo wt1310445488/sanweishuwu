@@ -95,14 +95,14 @@ export default {
             
         },
         loadCategory(){
-             let url = "http://localhost:6677/category/findAll"
+             let url = "http://120.55.194.134:6677/category/findAll"
         request.get(url).then((response)=>{
             //将查询结果设置到products中,this指向外部函数的this
             this.options = response.data;
         })
         },
         loadData(){
-             let url = "http://localhost:6677/product/findAll"
+             let url = "http://120.55.194.134:6677/product/findAll"
         request.get(url).then((response)=>{
             //将查询结果设置到products中,this指向外部函数的this
             this.products = response.data;
@@ -110,7 +110,7 @@ export default {
         },
         submitHandler(){
             //通过request与后台进行交互，并携带参数
-            let url = "http://localhost:6677/product/saveOrUpdate"
+            let url = "http://120.55.194.134:6677/product/saveOrUpdate"
             request({
                 url,
                 method:"POST",
@@ -154,7 +154,7 @@ export default {
           type: 'warning'
         }).then(() => {
             //调用后台接口，完成删除操作。
-            let url = "http://localhost:6677/product/deleteById?id="+id;
+            let url = "http://120.55.194.134:6677/product/deleteById?id="+id;
             request.get(url).then((response)=>{
                 //1.刷新数据
                 this.loadData();

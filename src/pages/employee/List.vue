@@ -95,7 +95,7 @@ export default {
        
     methods:{
     submitHandler(){
-        let url = "http://localhost:6677/waiter/saveOrUpdate";
+        let url = "http://120.55.194.134:6677/waiter/saveOrUpdate";
         //前端向后台发送请求，完成数据的保存操作
         request({  
           url,
@@ -117,7 +117,7 @@ export default {
       },
       //重载员工数据
     loadData(){
-        let url = "http://localhost:6677/waiter/findAll"
+        let url = "http://120.55.194.134:6677/waiter/findAll"
         request.get(url).then((response)=>{
           //箭头函数中的this指向外部函数中的this
           this.employees = response.data;
@@ -141,7 +141,7 @@ export default {
           type: 'warning'
         }).then(() => {
             //调用后台接口，完成删除操作。
-            let url = "http://localhost:6677/waiter/deleteById?id="+id;
+            let url = "http://120.55.194.134:6677/waiter/deleteById?id="+id;
             request.get(url).then((response)=>{
                 //1.刷新数据
                 this.loadData();
